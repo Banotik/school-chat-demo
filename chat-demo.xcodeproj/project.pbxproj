@@ -22,6 +22,7 @@
 		8FBF31C2202BD46400E97070 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBF31C1202BD46400E97070 /* Test.swift */; };
 		8FBF31C5202BD7F900E97070 /* ChatRoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBF31C4202BD7F900E97070 /* ChatRoomCell.swift */; };
 		8FBF31C7202BDA5500E97070 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBF31C6202BDA5500E97070 /* ChatRoomViewController.swift */; };
+		8FBF31CA202BDE9E00E97070 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBF31C9202BDE9E00E97070 /* NavigationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		8FBF31C1202BD46400E97070 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		8FBF31C4202BD7F900E97070 /* ChatRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomCell.swift; sourceTree = "<group>"; };
 		8FBF31C6202BDA5500E97070 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
+		8FBF31C9202BDE9E00E97070 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		BE72626982570829C62AFCE5 /* Pods-chat-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chat-demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-chat-demo/Pods-chat-demo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				8FBF31BD202BD22A00E97070 /* ChatRoomsViewController.swift */,
+				8FBF31C9202BDE9E00E97070 /* NavigationViewController.swift */,
 				8FBF31C6202BDA5500E97070 /* ChatRoomViewController.swift */,
 				8FBF31B7202BCEAB00E97070 /* BaseViewController.swift */,
 			);
@@ -262,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FBF31B8202BCEAB00E97070 /* BaseViewController.swift in Sources */,
+				8FBF31CA202BDE9E00E97070 /* NavigationViewController.swift in Sources */,
 				8FBF31C2202BD46400E97070 /* Test.swift in Sources */,
 				8F9416D8202BC7D700F33AAF /* AppDelegate.swift in Sources */,
 				8FBF31BA202BCEB900E97070 /* Models.swift in Sources */,

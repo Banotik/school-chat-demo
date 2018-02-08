@@ -17,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
         // Override point for customization after application launch.
         Logger.d(clzz: "AppDelegate", description: "didFinishLaunchingWithOptions")
         
+        let tester = ChatTester.shared
+    
+        tester.add(msg: "hello")
        
         return true
     }

@@ -39,9 +39,19 @@ class ChatRoomsViewController: UITableViewController {
         cell.chatLabel.text = ChatRoomManger.shared.test_chatRooms[indexPath.row]
         
         
-         
-        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let idx = indexPath.row // the index of chat
+        
+        let chat = ChatRoomModel(name: ChatRoomManger.shared.test_chatRooms[idx])
+        
+        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ChatRoomViewController") as? ChatRoomViewController{
+            viewController.chatRoomModel = chat
+            
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
  
 
