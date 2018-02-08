@@ -11,7 +11,7 @@ It enable students to reach out to teachers for any help or discussion through c
 
 
 <p>
-This demo application runs in two mode: Student and Teacher/Admin </br>
+This demo application runs in two mode: <b>Student and Teacher/Admin</b> </br>
 
 For Teacher mode, teachers can add and remove classes (Also chat in the chat rooms).
 
