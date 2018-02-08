@@ -14,35 +14,34 @@ class ChatRoomHandler: NSObject, PNObjectEventListener{
     
     private var _channels = [String]()
     
+    private var _channelsDict = [String: ChatRoomModel]()
+    
     static let shared = ChatRoomHandler()
     // init here
     private override init(){
         Logger.d(clzz: "ChatRoomHandler", description: "init")
         
-        let config = PNConfiguration(publishKey: PubNubApiClient.publishKey, subscribeKey: PubNubApiClient.subscribeKey)
-        
-        
+        let config = PNConfiguration(publishKey: PubNubApi.publishKey, subscribeKey: PubNubApi.subscribeKey)
+    
         super.init()
         
         self.client = PubNub.clientWithConfiguration(config)
         self.client.addListener(self)
     }
     
-    
     func addChannel(_ name: String){
-        if !_channels.contains(name){
-            self._channels.append(name)
-            self.client.subscribeToChannels(self._channels, withPresence:true)
-            
-        }
+      
+        _channelsDict[name] = ChatRoomModel(name: name)
+        
+        self.client.subscribeToPresenceChannels([name])
+      
     }
     
-    
-    
+
     func sendMessage(who: ChatRoomModel, msg: String ){
         let name = who.name
         
-        if self._channels.contains(name){
+        if self._channelsDict[name] != nil{
             
             self.client.publish(msg, toChannel: name, compressed: false, withCompletion: {(status) in
                 
@@ -68,6 +67,12 @@ class ChatRoomHandler: NSObject, PNObjectEventListener{
         
         print("Received message: \(message.data.message) on channel \(message.data.channel) " +
             "at \(message.data.timetoken)")
+        
+        let name = message.data.channel
+        
+        if let chatRoomModel = self._channelsDict[name] {
+            chatRoomModel.recieved( msg: message.data.message )
+        }
     }
     
     
@@ -93,7 +98,7 @@ protocol ChatListener{
   
 }
 
-class ChatRoomModel{
+class ChatRoomModel: NSObject{
     
     var history = [String]()
     
@@ -107,5 +112,12 @@ class ChatRoomModel{
         
         ChatRoomHandler.shared.sendMessage(who: self, msg: msg)
     }
-     
+
+    func recieved(msg: Any){
+        
+    }
+}
+
+protocol ChatRoomDelegate {
+    func message(msg: String)
 }

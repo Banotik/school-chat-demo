@@ -12,7 +12,6 @@
 		8F9416DD202BC7D700F33AAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F9416DB202BC7D700F33AAF /* Main.storyboard */; };
 		8F9416DF202BC7D700F33AAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F9416DE202BC7D700F33AAF /* Assets.xcassets */; };
 		8F9416E2202BC7D700F33AAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F9416E0202BC7D700F33AAF /* LaunchScreen.storyboard */; };
-		8FBF31B4202BCB7000E97070 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBF31B3202BCB7000E97070 /* ApiClient.swift */; };
 		8FBF31B6202BCCD900E97070 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBF31B5202BCCD900E97070 /* Util.swift */; };
 		8FBF31B8202BCEAB00E97070 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBF31B7202BCEAB00E97070 /* BaseViewController.swift */; };
 		8FBF31BA202BCEB900E97070 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBF31B9202BCEB900E97070 /* Models.swift */; };
@@ -34,7 +33,6 @@
 		8F9416DE202BC7D700F33AAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8F9416E1202BC7D700F33AAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8F9416E3202BC7D700F33AAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8FBF31B3202BCB7000E97070 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		8FBF31B5202BCCD900E97070 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		8FBF31B7202BCEAB00E97070 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		8FBF31B9202BCEB900E97070 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 				8F9416D7202BC7D700F33AAF /* AppDelegate.swift */,
 				8FBF31C8202BDA6000E97070 /* Controller */,
 				8FBF31BF202BD3DE00E97070 /* Chat.swift */,
-				8FBF31B3202BCB7000E97070 /* ApiClient.swift */,
 				8FBF31B5202BCCD900E97070 /* Util.swift */,
 				8FBF31B9202BCEB900E97070 /* Models.swift */,
 				8FBF31C1202BD46400E97070 /* Test.swift */,
@@ -269,7 +266,6 @@
 				8FBF31C2202BD46400E97070 /* Test.swift in Sources */,
 				8F9416D8202BC7D700F33AAF /* AppDelegate.swift in Sources */,
 				8FBF31BA202BCEB900E97070 /* Models.swift in Sources */,
-				8FBF31B4202BCB7000E97070 /* ApiClient.swift in Sources */,
 				8FBF31C5202BD7F900E97070 /* ChatRoomCell.swift in Sources */,
 				8FBF31C0202BD3DE00E97070 /* Chat.swift in Sources */,
 				8FBF31C7202BDA5500E97070 /* ChatRoomViewController.swift in Sources */,

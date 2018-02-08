@@ -17,7 +17,7 @@ class ChatTester: NSObject, PNObjectEventListener{
     static let shared = ChatTester()
     
     private override init(){
-        let config = PNConfiguration(publishKey: PubNubApiClient.publishKey, subscribeKey: PubNubApiClient.subscribeKey)
+        let config = PNConfiguration(publishKey: PubNubApi.publishKey, subscribeKey: PubNubApi.subscribeKey)
         
         
         self.client = PubNub.clientWithConfiguration(config)

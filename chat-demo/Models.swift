@@ -17,4 +17,11 @@ class User{
     
 }
 
- 
+class Student: User{
+    
+}
+
+class Teacher: User{
+    
+}
+
