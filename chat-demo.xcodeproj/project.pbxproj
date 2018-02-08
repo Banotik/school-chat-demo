@@ -13,6 +13,8 @@
 		8F9416DD202BC7D700F33AAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F9416DB202BC7D700F33AAF /* Main.storyboard */; };
 		8F9416DF202BC7D700F33AAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F9416DE202BC7D700F33AAF /* Assets.xcassets */; };
 		8F9416E2202BC7D700F33AAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F9416E0202BC7D700F33AAF /* LaunchScreen.storyboard */; };
+		8FBF31B4202BCB7000E97070 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBF31B3202BCB7000E97070 /* ApiClient.swift */; };
+		8FBF31B6202BCCD900E97070 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBF31B5202BCCD900E97070 /* Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		8F9416DE202BC7D700F33AAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8F9416E1202BC7D700F33AAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8F9416E3202BC7D700F33AAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8FBF31B3202BCB7000E97070 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		8FBF31B5202BCCD900E97070 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		BE72626982570829C62AFCE5 /* Pods-chat-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chat-demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-chat-demo/Pods-chat-demo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +84,8 @@
 			children = (
 				8F9416D7202BC7D700F33AAF /* AppDelegate.swift */,
 				8F9416D9202BC7D700F33AAF /* ViewController.swift */,
+				8FBF31B3202BCB7000E97070 /* ApiClient.swift */,
+				8FBF31B5202BCCD900E97070 /* Util.swift */,
 				8F9416DB202BC7D700F33AAF /* Main.storyboard */,
 				8F9416DE202BC7D700F33AAF /* Assets.xcassets */,
 				8F9416E0202BC7D700F33AAF /* LaunchScreen.storyboard */,
@@ -219,6 +225,8 @@
 			files = (
 				8F9416DA202BC7D700F33AAF /* ViewController.swift in Sources */,
 				8F9416D8202BC7D700F33AAF /* AppDelegate.swift in Sources */,
+				8FBF31B4202BCB7000E97070 /* ApiClient.swift in Sources */,
+				8FBF31B6202BCCD900E97070 /* Util.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

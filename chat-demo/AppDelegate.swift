@@ -13,10 +13,24 @@ import PubNub
 class AppDelegate: UIResponder, UIApplicationDelegate, PNObjectEventListener {
 
     var window: UIWindow?
+    
+    var client: PubNub!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        Logger.d(clzz: "AppDelegate", description: "didFinishLaunchingWithOptions")
+        
+        
+        let configuration = PNConfiguration(publishKey: PubNubApiClient.publishKey, subscribeKey: PubNubApiClient.subscribeKey)
+         
+        self.client = PubNub.clientWithConfiguration(configuration)
+        
+    
+        self.client.addListener(self)
+        self.client.subscribeToChannels(["my_channel"], withPresence: true)
+        
+        
         return true
     }
 
