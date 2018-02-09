@@ -9,7 +9,6 @@
 import Foundation
 import PubNub
 
-
 class ChatTester: NSObject, PNObjectEventListener{
     
     var client: PubNub!

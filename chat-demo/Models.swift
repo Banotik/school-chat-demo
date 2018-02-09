@@ -25,3 +25,18 @@ class Teacher: User{
     
 }
 
+
+// Chat Model Message
+class ChatMessageModel: NSObject{
+    let myMessage: Bool
+    let message: String
+    var userName: String?
+    
+    init(myMessage: Bool = true, message: String){
+        self.myMessage = myMessage
+        self.message = message
+    }
+    
+    
+}
+

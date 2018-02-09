@@ -100,12 +100,31 @@ protocol ChatListener{
 
 class ChatRoomModel: NSObject{
     
+    var messageHistory = [ChatMessageModel]()
+    
     var history = [String]()
+ 
+    
+    func test(){
+    
+        history.insert("Hello friends!", at: 0)
+        history.insert("Nothing much!", at: 0)
+        history.insert("wassup!", at: 0)
+        
+        
+        
+    }
     
     let name: String
     
     init(name: String){
+      
+ 
         self.name = name
+        
+        super.init()
+        
+        self.test()
     }
     
     func add(msg: String){
