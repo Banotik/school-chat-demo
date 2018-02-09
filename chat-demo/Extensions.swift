@@ -46,10 +46,7 @@ extension String{
 private var kAssociationKeyMaxLength: Int = 0
 
 extension UITextField {
-    /*
-     * This IBInspectable adds maxLength property to the UIBuilder
-     * This property is used to set studentId maxLength to 6
-     */
+ 
     @IBInspectable var maxLength: Int {
         get {
             if let length = objc_getAssociatedObject(self, &kAssociationKeyMaxLength) as? Int {

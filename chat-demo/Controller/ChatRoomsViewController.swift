@@ -28,24 +28,25 @@ class ChatRoomsViewController: UITableViewController {
     }
   
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return ChatRoomManger.shared.test_chatRooms.count
+     
+        return ChatRoomHandler.shared.channels.count
     }
 
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatRoomCell", for: indexPath) as! ChatRoomCell
         
-        cell.chatLabel.text = ChatRoomManger.shared.test_chatRooms[indexPath.row]
+        cell.chatLabel.text = ChatRoomHandler.shared.channels[indexPath.row]
         
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let idx = indexPath.row // the index of chat
+       
+        let chatName = ChatRoomHandler.shared.channels[indexPath.row]
         
-        let chat = ChatRoomModel(name: ChatRoomManger.shared.test_chatRooms[idx])
+        let chat = ChatRoomHandler.shared.channelsDict[chatName]
         
         if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ChatRoomViewController") as? ChatRoomViewController{
             viewController.chatRoomModel = chat

@@ -10,7 +10,7 @@ import UIKit
 
 class ChatMessageBubble: UITableViewCell{
     
-    weak var chatMessageModel: ChatMessageModel!
+    var chatMessageModel: ChatMessageModel!
     
     @IBOutlet weak var message: UITextView!
     

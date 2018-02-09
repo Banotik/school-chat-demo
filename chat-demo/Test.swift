@@ -32,11 +32,27 @@ class ChatTester: NSObject, PNObjectEventListener{
     }
     
     func add(msg: String){
-        
+    
+
         self.client.publish(msg, toChannel: "my_channel", compressed: false, withCompletion: {(status) in
             
             if !status.isError{
                 print(msg)
+            }else{
+                // handle error
+            }
+        })
+        
+    }
+    
+    
+    func add(msg: ChatMessageModel){
+        
+     
+        self.client.publish(msg.toJSON(), toChannel: "my_channel", compressed: false, withCompletion: {(status) in
+            
+            if !status.isError{
+                
             }else{
                 // handle error
             }
@@ -52,7 +68,12 @@ class ChatTester: NSObject, PNObjectEventListener{
             
         }
         
-        print("Received message: \(message.data.message) on channel \(message.data.channel) " + "at \(message.data.timetoken)")
+        
+        
+        let c = message.data.message as! [String: Any]
+        print(c["message"])
+        
+      //  print("Received message: \(message.data.message) on channel \(message.data.channel) " + "at \(message.data.timetoken)")
     }
     
     // New presence event handling.

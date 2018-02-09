@@ -11,10 +11,8 @@ import PubNub
 
 class ChatRoomHandler: NSObject, PNObjectEventListener{
     private var client: PubNub!
-    
-    private var _channels = [String]()
-    
-    private var _channelsDict = [String: ChatRoomModel]()
+    var channels = [String]()
+    var channelsDict = [String: ChatRoomModel]()
     
     static let shared = ChatRoomHandler()
     // init here
@@ -27,116 +25,119 @@ class ChatRoomHandler: NSObject, PNObjectEventListener{
         
         self.client = PubNub.clientWithConfiguration(config)
         self.client.addListener(self)
+        
+        initDemoChannel() // for demo
+        
+        
+    }
+    
+    
+    func initDemoChannel(){
+        self.addChannel("math")
+        self.addChannel("science")
     }
     
     func addChannel(_ name: String){
       
-        _channelsDict[name] = ChatRoomModel(name: name)
-        
-        self.client.subscribeToPresenceChannels([name])
-      
+        channels.append(name)
+        channelsDict[name] = ChatRoomModel(name: name)
+        self.client.subscribeToChannels([name], withPresence: true)
     }
     
-
-    func sendMessage(who: ChatRoomModel, msg: String ){
-        let name = who.name
+    func sendMessage(who: ChatRoomModel, msg: [String: Any], completion: @escaping (_ code: SendMsgCode) -> Void ){
+        Logger.d(clzz: "ChatRoomHandler", description: "sendMessage")
+       
         
-        if self._channelsDict[name] != nil{
+        let name = who.name
+        print(name)
+        if self.channelsDict[name] != nil{
             
             self.client.publish(msg, toChannel: name, compressed: false, withCompletion: {(status) in
-                
                 if !status.isError{
                     // success
+                    completion(.success)
                 }else{
                     // handle error
+                    completion(.error)
                 }
             })
         }
         
     }
     
+  
+    
     // Handle new message from one of channels on which client has been subscribed
     func client(_ client: PubNub, didReceiveMessage message: PNMessageResult) {
+        Logger.d(clzz: "ChatRoomHandler", description: "didRecieveMessage")
         if message.data.channel != message.data.subscription{
             // Message has been received on channel group
-            
-        
+            // Message recieved from users in chat
         }else{
+            // Message recieved from myself
+            
+            let who = message.data.channel
+            
+            if let chatRoom = self.channelsDict[who]{
+                chatRoom.recieved(msg: message.data.message)
+            }
             
         }
         
-        print("Received message: \(message.data.message) on channel \(message.data.channel) " +
-            "at \(message.data.timetoken)")
-        
-        let name = message.data.channel
-        
-        if let chatRoomModel = self._channelsDict[name] {
-            chatRoomModel.recieved( msg: message.data.message )
-        }
+     
+ 
     }
     
     
-    
-}
-
-final class ChatRoomManger{
-    
-    static let shared = ChatRoomManger() 
-    
-    private init(){}
-    
-    
-    
-    var test_chatRooms = ["math", "science", "physics", "art"]
-    
-
-}
-
-protocol ChatListener{
-    
-    func message(msg: String)
-  
 }
 
 class ChatRoomModel: NSObject{
     
+    weak var delegate: ChatRoomDelegate!
+    
     var messageHistory = [ChatMessageModel]()
     
     var history = [String]()
- 
-    
-    func test(){
-    
-        history.insert("Hello friends!", at: 0)
-        history.insert("Nothing much!", at: 0)
-        history.insert("wassup!", at: 0)
-        
-        
-        
-    }
-    
+     
     let name: String
     
     init(name: String){
-      
- 
         self.name = name
         
         super.init()
         
-        self.test()
+    }
+    
+    func tryToSend(msg: ChatMessageModel, completion: @escaping (_ code: SendMsgCode) -> Void  ){
+        Logger.d(clzz: "ChatRoomModel", description: "tryToSend")
+        
+        // tell chat room handler that a message needs to be send
+        ChatRoomHandler.shared.sendMessage(who: self, msg: msg.toJSON(), completion: completion)
+        
+        
     }
     
     func add(msg: String){
         
-        ChatRoomHandler.shared.sendMessage(who: self, msg: msg)
     }
 
     func recieved(msg: Any){
-        
+   
+        Logger.d(clzz: "ChatRoomModel", description: "recieved msg")
+        if let data = msg as? [String: Any]{
+            self.messageHistory.append(ChatMessageModel(dict: data))
+            delegate.recieved()
+        }
     }
 }
 
-protocol ChatRoomDelegate {
-    func message(msg: String)
+enum SendMsgCode{
+    case success
+    case error
+}
+
+protocol ChatRoomDelegate: class {
+    func recieved()
+    
+    func status(code: SendMsgCode)
 }
