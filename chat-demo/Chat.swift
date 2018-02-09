@@ -20,7 +20,7 @@ class ChatRoomHandler: NSObject, PNObjectEventListener{
     // init here
     private override init(){
         Logger.d(clzz: "ChatRoomHandler", description: "init")
-        
+ 
         let config = PNConfiguration(publishKey: PubNubApi.publishKey, subscribeKey: PubNubApi.subscribeKey)
     
         super.init()

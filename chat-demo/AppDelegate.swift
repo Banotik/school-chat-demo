@@ -16,10 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         Logger.d(clzz: "AppDelegate", description: "didFinishLaunchingWithOptions")
-        
-        let tester = ChatTester.shared
+     
+       // let tester = ChatTester.shared
     
-        tester.add(msg: "hello")
+        //tester.add(msg: "hello")
        
         return true
     }

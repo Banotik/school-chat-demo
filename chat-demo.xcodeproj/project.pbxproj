@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4DFAD519E40B37DCC1FC250B /* Pods_chat_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F231517492954E63FF49A5 /* Pods_chat_demo.framework */; };
+		8F2AE9CA202D4ADF006C2FA3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2AE9C9202D4ADF006C2FA3 /* Extensions.swift */; };
 		8F9416D8202BC7D700F33AAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9416D7202BC7D700F33AAF /* AppDelegate.swift */; };
 		8F9416DD202BC7D700F33AAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F9416DB202BC7D700F33AAF /* Main.storyboard */; };
 		8F9416DF202BC7D700F33AAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F9416DE202BC7D700F33AAF /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		18F231517492954E63FF49A5 /* Pods_chat_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_chat_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A0065399605739988FEE145 /* Pods-chat-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chat-demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-chat-demo/Pods-chat-demo.release.xcconfig"; sourceTree = "<group>"; };
+		8F2AE9C9202D4ADF006C2FA3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8F9416D4202BC7D600F33AAF /* chat-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "chat-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F9416D7202BC7D700F33AAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F9416DC202BC7D700F33AAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				8FBF31BF202BD3DE00E97070 /* Chat.swift */,
 				8FBF31B5202BCCD900E97070 /* Util.swift */,
 				8FBF31B9202BCEB900E97070 /* Models.swift */,
+				8F2AE9C9202D4ADF006C2FA3 /* Extensions.swift */,
 				8FBF31C1202BD46400E97070 /* Test.swift */,
 				8F9416DB202BC7D700F33AAF /* Main.storyboard */,
 				8FBF31BB202BD1AF00E97070 /* User.storyboard */,
@@ -270,6 +273,7 @@
 				8FBF31C0202BD3DE00E97070 /* Chat.swift in Sources */,
 				8FBF31C7202BDA5500E97070 /* ChatRoomViewController.swift in Sources */,
 				8FBF31BE202BD22A00E97070 /* ChatRoomsViewController.swift in Sources */,
+				8F2AE9CA202D4ADF006C2FA3 /* Extensions.swift in Sources */,
 				8FBF31B6202BCCD900E97070 /* Util.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

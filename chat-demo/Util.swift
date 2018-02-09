@@ -8,13 +8,13 @@
 
 import Foundation
 
+// Simple Logger class for more controller over console output
 final class Logger{
-    
-
     static func d(clzz: String, description: String){
         print("\(clzz) : \(description)")
     }
 }
+
 
 final class PubNubApi{
     static let publishKey = "pub-c-fa963e8c-3c58-4cb4-867b-4702f438526d"
