@@ -28,6 +28,27 @@ class Teacher: User{
     
 }
 
+class GuestStudent: Student{
+
+}
+
+class GuestTeacher: Teacher{
+    
+}
+
+final class Auth{
+
+    var user: User?
+    
+    static let auth = Auth()
+    
+    private init(){ }
+    
+    func signUp(guest: User){
+        self.user = guest
+    }
+}
+
 
 /*
  * We can package more data here
@@ -35,12 +56,14 @@ class Teacher: User{
  */
 struct ChatMessageModel{
     
-    let myMessage: Bool
     let message: String
     var userName: String?
     
+    let uuid: String
+    
     init(dict: [String: Any]) {
-        self.myMessage = dict["myMessage"] as! Bool
+       
+        self.uuid = dict["uuid"] as! String 
         self.message = dict["message"] as! String
         
         if let userName = dict["userName"] as? String{
@@ -48,15 +71,16 @@ struct ChatMessageModel{
         }
     }
     
-    init(myMessage: Bool = true, message: String){
-        self.myMessage = myMessage
+    init(uuid: String, message: String){
+        self.uuid = uuid
         self.message = message
+        
     }
     
     func toJSON()->[String: Any]{
         var dict = [String: Any]()
         
-        dict["myMessage"] = myMessage
+        dict["uuid"] = uuid
         dict["message"] = message
         dict["userName"] = userName
         

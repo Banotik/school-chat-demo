@@ -32,7 +32,7 @@ class ChatMessageBubble: UITableViewCell{
         message.backgroundColor = UIColor(rgb: 0x29B6F6)
         message.textColor = UIColor.white
         
-        if !chatMessageModel.myMessage{
+        if chatMessageModel.uuid != Auth.auth.user?.uuid{
             message.frame.origin.x = 100
             message.backgroundColor = UIColor(rgb: 0x00897B)
         }

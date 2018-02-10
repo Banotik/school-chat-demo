@@ -58,6 +58,15 @@ class BaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func jumpStoryBoard(name: String){
+        let sb = UIStoryboard(name: name, bundle: nil)
+     
+        let vc = sb.instantiateInitialViewController()
+        
+        self.present(vc!, animated: true, completion: nil)
+        
+    }
  
 
 }

@@ -25,7 +25,7 @@ class ChatRoomViewController: BaseViewController, UITextFieldDelegate, UITableVi
             return
         }
         
-        let model = ChatMessageModel(message: message)
+        let model = ChatMessageModel(uuid: (Auth.auth.user?.uuid)!, message: message)
         
         chatRoomModel.tryToSend(msg: model, completion: { (code) in
             
@@ -63,6 +63,7 @@ class ChatRoomViewController: BaseViewController, UITextFieldDelegate, UITableVi
         self.tableView.allowsSelection = false
         // set delegate
         self.chatRoomModel.delegate = self
+        self.inputTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -106,6 +107,11 @@ class ChatRoomViewController: BaseViewController, UITextFieldDelegate, UITableVi
             print("Success")
         }
     }
-    
+   
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+      
+        inputTextField.resignFirstResponder()
+        return true
+    }
 
 }

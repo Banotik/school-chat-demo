@@ -27,17 +27,22 @@ extension UIColor {
     }
 }
 
-
+extension UIViewController{
+    
+ 
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard(_:)))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+}
 extension String{
     
-    func capitalizingFirstLetter() -> String {
-        return prefix(1).uppercased() + dropFirst()
-    }
-    
-    mutating func capitalizeFirstLetter() {
-        self = self.capitalizingFirstLetter()
-    }
-    
+ 
     mutating func clear(){
         self = ""
     }

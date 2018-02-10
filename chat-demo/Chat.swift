@@ -73,15 +73,26 @@ class ChatRoomHandler: NSObject, PNObjectEventListener{
         if message.data.channel != message.data.subscription{
             // Message has been received on channel group
             // Message recieved from users in chat
+            
+            print(1)
         }else{
+            print(2)
             // Message recieved from myself
             
+            /*
             let who = message.data.channel
             
             if let chatRoom = self.channelsDict[who]{
                 chatRoom.recieved(msg: message.data.message)
-            }
+            }*/
             
+        }
+        
+        
+        let who = message.data.channel
+        
+        if let chatRoom = self.channelsDict[who]{
+            chatRoom.recieved(msg: message.data.message)
         }
         
      
@@ -93,7 +104,7 @@ class ChatRoomHandler: NSObject, PNObjectEventListener{
 
 class ChatRoomModel: NSObject{
     
-    weak var delegate: ChatRoomDelegate!
+    weak var delegate: ChatRoomDelegate?
     
     var messageHistory = [ChatMessageModel]()
     
@@ -122,11 +133,15 @@ class ChatRoomModel: NSObject{
     }
 
     func recieved(msg: Any){
+        guard let delegate = self.delegate else {
+            return
+        }
    
         Logger.d(clzz: "ChatRoomModel", description: "recieved msg")
         if let data = msg as? [String: Any]{
             self.messageHistory.append(ChatMessageModel(dict: data))
             delegate.recieved()
+           
         }
     }
 }
