@@ -9,6 +9,17 @@
 import Foundation
 import UIKit
 
+extension Double{
+    
+    func formatTime()->String{
+        let date = Date(timeIntervalSince1970: self)
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        dateFormatter.timeZone = TimeZone(identifier: TimeZone.current.identifier)
+        return dateFormatter.string(from: date as Date)
+    }
+}
+
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
@@ -28,8 +39,7 @@ extension UIColor {
 }
 
 extension UIViewController{
-    
- 
+     
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard(_:)))
         tap.cancelsTouchesInView = false

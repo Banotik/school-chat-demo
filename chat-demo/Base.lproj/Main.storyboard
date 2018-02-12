@@ -45,7 +45,14 @@
                             <outlet property="delegate" destination="tU4-OL-Lbe" id="QaZ-sC-XtD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="9IX-ZG-OBl"/>
+                    <navigationItem key="navigationItem" id="9IX-ZG-OBl">
+                        <barButtonItem key="rightBarButtonItem" title="Add Class" id="O1B-Fn-Z0j">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="onAddClass:" destination="tU4-OL-Lbe" id="fFj-yB-mUq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n0Y-7V-wOp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -84,24 +91,37 @@
                                 <rect key="frame" x="16" y="56" width="343" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatMessageBubble" id="0vj-XH-jAf" customClass="ChatMessageBubble" customModule="chat_demo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatMessageBubble" rowHeight="70" id="0vj-XH-jAf" customClass="ChatMessageBubble" customModule="chat_demo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0vj-XH-jAf" id="Yny-Zz-JSk">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Message" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0JG-iF-5Aj">
-                                                    <rect key="frame" x="51" y="0.0" width="292" height="33"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" keyboardDismissMode="onDrag" text="Message" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0JG-iF-5Aj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="179" height="33"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.050000000000000003" translatesAutoresizingMaskIntoConstraints="NO" id="Qqp-ko-ylo">
+                                                    <rect key="frame" x="7" y="30" width="72" height="19"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="10AM from John">
+                                                            <attributes>
+                                                                <font key="NSFont" size="9" name=".AppleSystemUIFont"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="message" destination="0JG-iF-5Aj" id="zjn-6g-rY6"/>
+                                            <outlet property="receipt" destination="Qqp-ko-ylo" id="HGI-6f-Qot"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -144,7 +164,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPB-i8-cKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1086" y="707"/>
+            <point key="canvasLocation" x="-697" y="645"/>
         </scene>
     </scenes>
 </document>

@@ -9,7 +9,21 @@
 import UIKit
 
 class ChatRoomsViewController: UITableViewController {
+
  
+    @IBAction func onAddClass(_ sender: Any) {
+        let alert = UIAlertController(title: "Add Class", message: "class", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        
+        alert.addTextField(configurationHandler: {(textField) in
+            textField.placeholder = "Enter class:"
+            
+            
+        })
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // set title
@@ -36,7 +50,7 @@ class ChatRoomsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatRoomCell", for: indexPath) as! ChatRoomCell
         
-        cell.chatLabel.text = ChatRoomHandler.shared.channels[indexPath.row]
+        cell.chatLabel.text = ChatRoomHandler.shared.channels[indexPath.row].capitalized
         
         
         return cell

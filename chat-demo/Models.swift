@@ -57,24 +57,22 @@ final class Auth{
 struct ChatMessageModel{
     
     let message: String
-    var userName: String?
+    //TODO: Change it
+    let userName: String
     let uuid: String
-    
-    
-    
+    var timestamp: Double! = Date().timeIntervalSince1970
+
     init(dict: [String: Any]) {
-       
         self.uuid = dict["uuid"] as! String 
         self.message = dict["message"] as! String
-        
-        if let userName = dict["userName"] as? String{
-            self.userName = userName
-        }
+        self.timestamp = dict["timestamp"] as! Double
+        self.userName = dict["userName"] as! String
     }
     
-    init(uuid: String, message: String){
+    init(uuid: String, message: String, userName: String="guest"){
         self.uuid = uuid
         self.message = message
+        self.userName = userName
         
     }
     
@@ -84,6 +82,7 @@ struct ChatMessageModel{
         dict["uuid"] = uuid
         dict["message"] = message
         dict["userName"] = userName
+        dict["timestamp"] = timestamp
         
         return dict
     }

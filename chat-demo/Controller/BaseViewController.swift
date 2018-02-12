@@ -49,6 +49,7 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.hideKeyboardWhenTappedAround()
 
         // Do any additional setup after loading the view.
     }
@@ -67,6 +68,8 @@ class BaseViewController: UIViewController {
         self.present(vc!, animated: true, completion: nil)
         
     }
+    
+     
  
 
 }

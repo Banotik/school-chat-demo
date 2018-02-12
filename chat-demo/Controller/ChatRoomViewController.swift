@@ -52,6 +52,8 @@ class ChatRoomViewController: BaseViewController, UITextFieldDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self
         // set title 
         self.title = chatRoomModel.name.capitalized
         
@@ -65,6 +67,9 @@ class ChatRoomViewController: BaseViewController, UITextFieldDelegate, UITableVi
         // set delegate
         self.chatRoomModel.delegate = self
         self.inputTextField.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatRoomViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatRoomViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -117,5 +122,30 @@ class ChatRoomViewController: BaseViewController, UITextFieldDelegate, UITableVi
         inputTextField.resignFirstResponder()
         return true
     }
+    
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{ 
+                if ChatRoomViewController.offset == nil{
+                    ChatRoomViewController.offset = self.view.frame.origin.y - keyboardSize.height
+                }
+                self.view.frame.origin.y = ChatRoomViewController.offset!
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+                
+            }
+        
+        }
+    }
+    
+    static var offset: CGFloat?
 
 }

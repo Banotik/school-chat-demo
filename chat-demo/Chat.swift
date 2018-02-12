@@ -88,6 +88,7 @@ class ChatRoomHandler: NSObject, PNObjectEventListener{
             
             if let chatRoom = self.channelsDict[who]{
                 if let msg = message.data.message{
+                    //message.data.
                     chatRoom.recieved(msg: msg)
                 }
             }
