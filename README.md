@@ -18,3 +18,6 @@ For Teacher mode, teachers can add and remove classes (Also chat in the chat roo
 For student mode, students are only allow to enter chat rooms and discuss. 
 
 </p>
+
+
+<img src="screenshot.png">
