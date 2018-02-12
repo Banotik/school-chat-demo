@@ -8,6 +8,8 @@
 
 import Foundation
 
+var DEBUG = true
+
 // Simple Logger class for more controller over console output
 final class Logger{
     static func d(clzz: String, description: String){

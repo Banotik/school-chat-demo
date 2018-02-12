@@ -23,7 +23,10 @@ class ChatMessageBubble: UITableViewCell{
         initMessageView()
     }
     func initMessageView(){
-        
+    
+        message.translatesAutoresizingMaskIntoConstraints = true
+        message.sizeToFit()
+        message.isScrollEnabled = true
        
         message.text = chatMessageModel.message
         
@@ -32,8 +35,10 @@ class ChatMessageBubble: UITableViewCell{
         message.backgroundColor = UIColor(rgb: 0x29B6F6)
         message.textColor = UIColor.white
         
+        message.frame.origin.x = 10
+        
         if chatMessageModel.uuid != Auth.auth.user?.uuid{
-            message.frame.origin.x = 100
+            message.frame.origin.x = UIScreen.main.bounds.width - 100
             message.backgroundColor = UIColor(rgb: 0x00897B)
         }
         // message from chat 

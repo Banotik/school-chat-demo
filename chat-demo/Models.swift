@@ -58,8 +58,9 @@ struct ChatMessageModel{
     
     let message: String
     var userName: String?
-    
     let uuid: String
+    
+    
     
     init(dict: [String: Any]) {
        

@@ -24,6 +24,7 @@ class ChatRoomViewController: BaseViewController, UITextFieldDelegate, UITableVi
         guard let message = inputTextField.text else {
             return
         }
+        self.inputTextField.text?.clear()
         
         let model = ChatMessageModel(uuid: (Auth.auth.user?.uuid)!, message: message)
         
@@ -32,7 +33,7 @@ class ChatRoomViewController: BaseViewController, UITextFieldDelegate, UITableVi
             switch code{
             case .success:
                 print("success")
-                self.inputTextField.text?.clear()
+                
             default:
                 print("error")
                 self.alertMessage(title: "Error", message: "Message could not be send")
@@ -91,11 +92,14 @@ class ChatRoomViewController: BaseViewController, UITextFieldDelegate, UITableVi
     
     func recieved(){
         Logger.d(clzz: "ChatRoomViewController", description: "recieved msg")
+       
+        // update UI
+       
         DispatchQueue.main.async {
-            // update UI
             self.tableView.reloadData()
-            self.scrollToBottom()
+            // self.scrollToBottom()
         }
+      
     }
     
     func status(code: SendMsgCode) {

@@ -25,13 +25,9 @@ class ChatRoomHandler: NSObject, PNObjectEventListener{
         
         self.client = PubNub.clientWithConfiguration(config)
         self.client.addListener(self)
-        
         initDemoChannel() // for demo
-        
-        
     }
-    
-    
+ 
     func initDemoChannel(){
         self.addChannel("math")
         self.addChannel("science")
@@ -46,10 +42,9 @@ class ChatRoomHandler: NSObject, PNObjectEventListener{
     
     func sendMessage(who: ChatRoomModel, msg: [String: Any], completion: @escaping (_ code: SendMsgCode) -> Void ){
         Logger.d(clzz: "ChatRoomHandler", description: "sendMessage")
-       
         
         let name = who.name
-        print(name)
+        
         if self.channelsDict[name] != nil{
             
             self.client.publish(msg, toChannel: name, compressed: false, withCompletion: {(status) in
@@ -88,18 +83,16 @@ class ChatRoomHandler: NSObject, PNObjectEventListener{
             
         }
         
-        
-        let who = message.data.channel
-        
-        if let chatRoom = self.channelsDict[who]{
-            chatRoom.recieved(msg: message.data.message)
+        DispatchQueue.global().async {
+            let who = message.data.channel
+            
+            if let chatRoom = self.channelsDict[who]{
+                if let msg = message.data.message{
+                    chatRoom.recieved(msg: msg)
+                }
+            }
         }
-        
-     
- 
     }
-    
-    
 }
 
 class ChatRoomModel: NSObject{
@@ -120,28 +113,24 @@ class ChatRoomModel: NSObject{
     }
     
     func tryToSend(msg: ChatMessageModel, completion: @escaping (_ code: SendMsgCode) -> Void  ){
-        Logger.d(clzz: "ChatRoomModel", description: "tryToSend")
+        Logger.d(clzz: "ChatRoomModel", description: "tryToSend message send \(msg.message)")
         
         // tell chat room handler that a message needs to be send
         ChatRoomHandler.shared.sendMessage(who: self, msg: msg.toJSON(), completion: completion)
         
-        
     }
     
     func add(msg: String){
-        
     }
-
     func recieved(msg: Any){
-        guard let delegate = self.delegate else {
+        guard let delegate = self.delegate else { 
             return
         }
    
-        Logger.d(clzz: "ChatRoomModel", description: "recieved msg")
+        Logger.d(clzz: "ChatRoomModel", description: "recieved msg: \(msg)")
         if let data = msg as? [String: Any]{
             self.messageHistory.append(ChatMessageModel(dict: data))
             delegate.recieved()
-           
         }
     }
 }
